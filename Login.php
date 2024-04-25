@@ -4,7 +4,7 @@ session_start();
 $servername = "localhost";
 $Username = "root";
 $dbPassword = "";
-$dbname = "railway management";
+$dbname = "railway management system";
 
 // Connect to the database
 $conn = new mysqli($servername, $Username, $dbPassword, $dbname);
