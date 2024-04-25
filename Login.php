@@ -32,11 +32,14 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
     if ($count == 1) {
         $_SESSION['username'] = $username;
-        // Return a JSON response instead of redirecting
-        echo json_encode(['status' => 'success', 'message' => 'Login successful']);
+        // Redirect to welcome.php
+        header('Content-Type: application/json');
+        echo json_encode(['status' => 'success']);
+        
     } else {
+        header('Content-Type: application/json');
         echo json_encode(['status' => 'error', 'message' => 'Invalid username or password']);
-    }
+   }
 }
 
 $conn->close();
