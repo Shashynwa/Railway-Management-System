@@ -14,11 +14,26 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    console.log('Username/Email:', usernameOrEmail);
-    console.log('Password:', password);
-
-    // TODO: Add your own logic to handle the login
-
-    alert('Logged in successfully');
+    // Send a POST request to the server
+    fetch('Login.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `username=${encodeURIComponent(usernameOrEmail)}&password=${encodeURIComponent(password)}`,
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.status === 'success') {
+        alert('Logged in successfully');
+        // Redirect to welcome.php
+        window.location.href = 'welcome.php';
+      } else {
+        alert(data.message);
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   });
 });
