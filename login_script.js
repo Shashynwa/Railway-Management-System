@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
   
       if (result.status === 'success') {
         alert('Logged in successfully');
+        window.location.href = 'welcome.php';
       } else {
         alert('Invalid username or password');
       }
     });
   });
-  
